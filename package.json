@@ -1,0 +1,10 @@
+{
+    "name": "Motion Web Design © Copyright 2025",
+    "description": "Recreando un sitio web basico en motion design como parte de mis estudios de ReactJS",
+    "author": "Harry J. Arena",
+    "version": "1.0.0",
+    "license": "ISC",
+    "private": true,
+    "devDependencies": {},
+    "dependencies": {}
+}
