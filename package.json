@@ -3,7 +3,7 @@
     "description": "Recreando un sitio web basico en motion design como parte de mis estudios de ReactJS",
     "author": "Harry J. Arena",
     "version": "1.0.0",
-    "license": "ISC",
+    "license": "MIT",
     "private": true,
     "devDependencies": {},
     "dependencies": {}
