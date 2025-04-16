@@ -8,6 +8,9 @@
 #### Plugins integrados
 - [GSAP](https://www.npmjs.com/package/gsap)
 
-## Run scripts
+## Live Dev
 ### `npm install`
-### `npm start`
+### `npm run dev`
+
+## Compilation
+### `npm run build`
