@@ -1,10 +1,25 @@
 {
-    "name": "Motion Web Design © Copyright 2025",
+    "name": "motion-web-design",
     "description": "Recreando un sitio web basico en motion design como parte de mis estudios de ReactJS",
     "author": "Harry J. Arena",
     "version": "1.0.0",
     "license": "MIT",
     "private": true,
-    "devDependencies": {},
-    "dependencies": {}
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@types/react": "^19.1.2",
+        "@types/react-dom": "^19.1.2",
+        "@vitejs/plugin-react": "^4.4.0",
+        "gsap": "^3.12.7",
+        "react": "^19.1.0",
+        "react-dom": "^19.1.0",
+        "react-router-dom": "^7.5.0",
+        "sass": "^1.86.3",
+        "typescript": "^5.8.3",
+        "vite": "^6.3.0"
+    }
 }

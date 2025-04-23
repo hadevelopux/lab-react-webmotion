@@ -1,0 +1,24 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  color: #fff;
+}
+
+.main {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  padding: 2rem;
+  margin-top: 60px; // Ajustado para el header
+  margin-bottom: 60px; // Ajustado para el footer
+  min-height: calc(100vh - 120px); // Altura total menos header y footer
+}
+
+// Header y footer detrás de la cortina
+header, footer {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+} 
