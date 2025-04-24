@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { PageTransition } from './components/PageTransition/PageTransition'
 import Preloader from './components/Preloader/Preloader'
+import CustomCursor from './components/CustomCursor/CustomCursor'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
@@ -37,47 +38,31 @@ function App() {
 
   return (
     <div className={styles.app}>
-      {/* Contenido principal siempre presente */}
-      <nav className={styles.navigation}>
-        <ul>
-          <li>
-            <a 
-              href="/" 
-              onClick={(e) => handlePageChange(0, e)}
-              className={currentPageIndex === 0 ? styles.active : ''}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a 
-              href="/about" 
-              onClick={(e) => handlePageChange(1, e)}
-              className={currentPageIndex === 1 ? styles.active : ''}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a 
-              href="/contact" 
-              onClick={(e) => handlePageChange(2, e)}
-              className={currentPageIndex === 2 ? styles.active : ''}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <main className={styles.main}>
-        <PageTransition nextChildren={nextContent}>
-          {React.createElement(pageComponents[currentPageIndex])}
-        </PageTransition>
-      </main>
-
-      {/* Preloader como overlay */}
-      {isLoading && <Preloader onLoadingComplete={handlePreloaderComplete} />}
+      <CustomCursor />
+      {isLoading ? (
+        <Preloader onLoadingComplete={handlePreloaderComplete} />
+      ) : (
+        <>
+          <PageTransition nextChildren={nextContent}>
+            {React.createElement(pageComponents[currentPageIndex])}
+          </PageTransition>
+          <nav className={styles.navigation}>
+            <ul>
+              {pageComponents.map((_, index) => (
+                <li key={index}>
+                  <a
+                    href="#"
+                    onClick={(e) => handlePageChange(index, e)}
+                    className={index === currentPageIndex ? styles.active : ''}
+                  >
+                    {index === 0 ? 'Home' : index === 1 ? 'About' : 'Contact'}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </>
+      )}
     </div>
   )
 }
