@@ -1,3 +1,12 @@
+/**
+ * PageTransition.module.scss
+ * 
+ * Estilos para el componente de transición entre páginas
+ * Define la animación y comportamiento de las transiciones
+ */
+
+@import '../../styles/variables';
+
 /* Contenedor principal que envuelve el contenido y la transición */
 .wrapper {
   position: relative;
@@ -14,7 +23,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 1;
+  z-index: $z-index-header;
 }
 
 /* Contenido siguiente que se mostrará */
@@ -25,7 +34,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 2;
+  z-index: $z-index-modal;
   display: none;
 }
 
@@ -39,7 +48,7 @@
   width: 100%;
   height: 100vh;
   pointer-events: none; /* Permite interactuar con elementos debajo */
-  z-index: 999;
+  z-index: $z-index-preloader;
   display: none;
   gap: 0;
 }
@@ -48,11 +57,12 @@
 .bar {
   flex: 1; /* Distribuye el espacio equitativamente */
   height: 100%;
-  background-color: #333; /* Color de las barras */
+  background-color: $color-gray; /* Color de las barras */
   transform: translateY(-100%); /* Comienza fuera de la vista */
   will-change: transform; /* Optimiza la animación */
   margin: 0;
   min-width: 0;
+  transition: transform $transition-slow ease-in-out;
 }
 
 /* Clase de utilidad para mostrar elementos */
