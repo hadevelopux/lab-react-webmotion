@@ -1,7 +1,11 @@
 /**
- * Estilos para el componente de navegación
- * Define la apariencia y comportamiento de la barra de navegación
+ * Navigation.module.scss
+ * 
+ * Estilos para el componente de navegación principal
+ * Define la apariencia y comportamiento de la barra de navegación superior
  */
+
+@import '../../styles/variables';
 
 /* Contenedor principal de la navegación */
 .nav {
@@ -9,38 +13,60 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: var(--spacing-md);
   display: flex;
   justify-content: center;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.9);
+  z-index: var(--z-index-navigation);
+  background-color: var(--color-nav-bg);
   backdrop-filter: blur(5px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: background-color var(--transition-base);
 }
 
 /* Lista de enlaces de navegación */
 .navList {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: var(--spacing-lg);
   margin: 0;
   padding: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 
   /* Estilos para los enlaces */
   a {
-    color: #fff;
+    color: var(--color-white);
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.3s ease;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.5px;
+    transition: all var(--transition-base);
     opacity: 1;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
 
-    /* Estado hover */
+    /* Estado hover - Cambia el color y fondo al pasar el mouse */
     &:hover {
-      opacity: 0.8;
+      color: var(--color-hover);
+      background-color: var(--color-gray);
     }
 
-    /* Estado activo */
+    /* Estado activo - Indica la página actual */
     &.active {
-      opacity: 0.5;
+      color: var(--color-active);
+      background-color: var(--color-gray);
+    }
+
+    /* Estado focus - Mejora la accesibilidad */
+    &:focus {
+      outline: none;
     }
   }
 }

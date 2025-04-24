@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.content}>
-        <p>© 2025 Your Company. All rights reserved.</p>
+        Copyright © 2025
       </div>
     </footer>
   )

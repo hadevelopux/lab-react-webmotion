@@ -1,3 +1,72 @@
+/**
+ * PageTransition.module.scss
+ * 
+ * Estilos para el componente de transición de página
+ * Define las animaciones y efectos de transición entre páginas
+ */
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+/* Contenedor principal de la transición */
+.transitionContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: var(--z-index-preloader);
+  overflow: hidden;
+  @include performance;
+}
+
+/* Capa de transición */
+.transitionLayer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-black);
+  transform-origin: top;
+  @include performance;
+}
+
+/* Animación de entrada */
+.enter {
+  .transitionLayer {
+    transform: scaleY(0);
+    animation: slideDown var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+/* Animación de salida */
+.exit {
+  .transitionLayer {
+    transform: scaleY(1);
+    animation: slideUp var(--transition-slow) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+/* Keyframes para las animaciones */
+@keyframes slideDown {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: scaleY(1);
+  }
+  to {
+    transform: scaleY(0);
+  }
+}
+
 /* Contenedor principal que envuelve el contenido y la transición */
 .wrapper {
   position: relative;
@@ -14,7 +83,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 1;
+  z-index: var(--z-index-header);
 }
 
 /* Contenido siguiente que se mostrará */
@@ -25,7 +94,7 @@
   width: 100%;
   height: 100%;
   display: block;
-  z-index: 2;
+  z-index: var(--z-index-modal);
   display: none;
 }
 
@@ -38,21 +107,22 @@
   bottom: 0;
   width: 100%;
   height: 100vh;
-  pointer-events: none; /* Permite interactuar con elementos debajo */
-  z-index: 999;
+  pointer-events: none;
+  z-index: var(--z-index-preloader);
   display: none;
   gap: 0;
 }
 
 /* Barras individuales de la cortina */
 .bar {
-  flex: 1; /* Distribuye el espacio equitativamente */
+  flex: 1;
   height: 100%;
-  background-color: #333; /* Color de las barras */
-  transform: translateY(-100%); /* Comienza fuera de la vista */
-  will-change: transform; /* Optimiza la animación */
+  background-color: var(--color-gray);
+  transform: translateY(-100%);
+  will-change: transform;
   margin: 0;
   min-width: 0;
+  transition: transform var(--transition-slow) ease-in-out;
 }
 
 /* Clase de utilidad para mostrar elementos */

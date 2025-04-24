@@ -1,17 +1,30 @@
+/**
+ * Footer.module.scss
+ * 
+ * Estilos para el componente de pie de página
+ * Define la apariencia y comportamiento del footer fijo en la parte inferior
+ */
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+/* Contenedor principal del footer */
 .footer {
-  position: fixed;
+  @include fixed-full-width;
   bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  padding: 1rem 2rem;
-  background-color: rgba(0, 0, 0, 0.8);
+  z-index: var(--z-index-footer);
+  padding: var(--spacing-md);
+  background-color: var(--color-nav-bg);
   backdrop-filter: blur(5px);
+  color: var(--color-white);
+  @include flex-center;
 }
 
+/* Contenedor del contenido del footer */
 .content {
-  max-width: 1200px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
   text-align: center;
-  color: #fff;
+  font-size: var(--font-size-sm);
+  opacity: 0.8;
 } 
