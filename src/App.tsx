@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, MouseEvent, KeyboardEvent } from 'react'
 import { PageTransition } from './components/PageTransition/PageTransition'
 import Preloader from './components/Preloader/Preloader'
 import CustomCursor from './components/CustomCursor/CustomCursor'
 import Navigation from './components/Navigation/Navigation'
+import Footer from './components/Footer/Footer'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
+import { PageIndex } from './constants/navigation'
 import styles from './App.module.scss'
 
 /**
@@ -27,12 +29,12 @@ function App() {
    * @param {number} index - Índice de la sección a la que se quiere cambiar
    * @param {React.MouseEvent} e - Evento del clic
    */
-  const handlePageChange = (index: number, e: React.MouseEvent) => {
-    e.preventDefault() // Prevenir el comportamiento por defecto del ancla
+  const handlePageChange = (index: PageIndex, e: MouseEvent<Element> | KeyboardEvent<Element>) => {
+    e.preventDefault()
     if (index === currentPageIndex) return
     
     const NextPage = pageComponents[index]
-    setNextContent(<NextPage />)
+    setNextContent(React.createElement(NextPage))
     setCurrentPageIndex(index)
   }
 
@@ -59,6 +61,7 @@ function App() {
           />
         </>
       )}
+      <Footer />
     </div>
   )
 }
