@@ -20,7 +20,8 @@ function App() {
    * Maneja el cambio entre secciones
    * @param index - Índice de la sección a la que se quiere cambiar
    */
-  const handlePageChange = (index: number) => {
+  const handlePageChange = (index: number, e: React.MouseEvent) => {
+    e.preventDefault() // Prevenir el comportamiento por defecto del ancla
     if (index === currentPageIndex) return
     
     const NextPage = pageComponents[index]
@@ -32,15 +33,35 @@ function App() {
     <div className={styles.app}>
       {/* Navegación */}
       <nav className={styles.navigation}>
-        <button onClick={() => handlePageChange(0)} className={currentPageIndex === 0 ? styles.active : ''}>
-          Home
-        </button>
-        <button onClick={() => handlePageChange(1)} className={currentPageIndex === 1 ? styles.active : ''}>
-          About
-        </button>
-        <button onClick={() => handlePageChange(2)} className={currentPageIndex === 2 ? styles.active : ''}>
-          Contact
-        </button>
+        <ul>
+          <li>
+            <a 
+              href="/" 
+              onClick={(e) => handlePageChange(0, e)}
+              className={currentPageIndex === 0 ? styles.active : ''}
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/about" 
+              onClick={(e) => handlePageChange(1, e)}
+              className={currentPageIndex === 1 ? styles.active : ''}
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a 
+              href="/contact" 
+              onClick={(e) => handlePageChange(2, e)}
+              className={currentPageIndex === 2 ? styles.active : ''}
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
       </nav>
 
       {/* Contenido principal con transición */}
