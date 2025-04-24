@@ -1,0 +1,97 @@
+// Layout
+@mixin full-size {
+  width: 100%;
+  height: 100%;
+}
+
+@mixin fixed-full-width {
+  position: fixed;
+  width: 100%;
+}
+
+// Flexbox
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// Grid
+@mixin grid($columns, $gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Media Queries
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Transitions
+@mixin transition-base {
+  transition: all $transition-base;
+}
+
+@mixin transition-fast {
+  transition: all $transition-fast;
+}
+
+@mixin transition-slow {
+  transition: all $transition-slow;
+}
+
+// Typography
+@mixin text-base {
+  font-size: $font-size-base;
+  color: $color-white;
+  line-height: 1.5;
+}
+
+@mixin text-lg {
+  font-size: $font-size-lg;
+  color: $color-white;
+  line-height: 1.5;
+}
+
+@mixin text-xl {
+  font-size: $font-size-xl;
+  color: $color-white;
+  line-height: 1.5;
+}
+
+// Hover States
+@mixin hover-effect {
+  &:hover {
+    opacity: $color-hover;
+    @include transition-base;
+  }
+}
+
+// Animations
+@mixin fade-in {
+  animation: fadeIn $transition-base;
+}
+
+@mixin slide-up {
+  animation: slideUp $transition-base;
+} 

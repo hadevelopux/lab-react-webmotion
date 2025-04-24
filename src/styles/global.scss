@@ -1,3 +1,8 @@
+@import './variables';
+@import './mixins';
+@import './utils';
+
+// Reset
 * {
   margin: 0;
   padding: 0;
@@ -5,10 +10,11 @@
   cursor: none !important;
 }
 
+// Base
 html, body {
   height: 100%;
-  background-color: #000;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
   font-family: Arial, sans-serif;
   overflow-x: hidden;
 }
@@ -19,11 +25,109 @@ html, body {
   flex-direction: column;
 }
 
+// Typography
 h1, h2, h3, h4, h5, h6, p {
-  color: #fff;
+  color: $color-white;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  @include text-base;
+  margin-bottom: $spacing-sm;
+  font-weight: $font-weight-bold;
+}
+
+h1 { font-size: $font-size-xxl; }
+h2 { font-size: $font-size-xl; }
+h3 { font-size: $font-size-lg; }
+h4 { font-size: $font-size-base; }
+h5, h6 { font-size: $font-size-sm; }
+
+p {
+  @include text-base;
+  margin-bottom: $spacing-sm;
+}
+
+// Links
 a {
-  color: #fff;
+  color: $color-white;
   text-decoration: none;
+  @include text-base;
+  @include transition-base;
+  @include hover-effect;
+  
+  &:focus {
+    outline: 2px solid $color-white;
+    outline-offset: 2px;
+  }
+  
+  &:active {
+    opacity: $color-active;
+  }
+}
+
+// Forms
+input, textarea, button {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  @include transition-base;
+}
+
+input, textarea {
+  background: transparent;
+  border: 1px solid $color-white;
+  padding: $spacing-xs;
+  color: $color-white;
+  
+  &:focus {
+    outline: none;
+    border-color: $color-hover;
+  }
+  
+  &:disabled {
+    opacity: $color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  @include hover-effect;
+  
+  &:disabled {
+    opacity: $color-disabled;
+    cursor: not-allowed;
+  }
+}
+
+// Images
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+// Sections
+.section {
+  min-height: 100vh;
+  padding: 3rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+// Cursor
+.cursor-none {
+  cursor: none !important;
 } 

@@ -6,19 +6,22 @@
  * con transiciones suaves y efectos de hover.
  */
 
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
 .cursor {
   // Punto central del cursor
   width: 4px;
   height: 4px;
-  background: #fff;
+  background: $color-white;
   border-radius: 50%;
   position: fixed;
   pointer-events: none;
-  z-index: 99999; // Asegura que el cursor esté siempre visible por encima de todo el contenido
+  z-index: $z-index-cursor;
   mix-blend-mode: difference; // Hace que el cursor sea visible en cualquier fondo
   will-change: transform; // Optimiza el rendimiento para las animaciones de transformación
   transform: translate(-50%, -50%);
-  transition: width 0.3s ease, height 0.3s ease;
+  @include transition-base;
 
   // Anillo circundante
   &::after {
@@ -28,17 +31,18 @@
     left: 50%;
     width: 24px;
     height: 24px;
-    border: 1px solid #fff;
+    border: 1px solid $color-white;
     border-radius: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.5;
+    @include transition-base;
   }
 
   // Estado hover - el cursor se expande en elementos interactivos
   &.hover {
     width: 12px;
     height: 12px;
-    background: #fff;
+    background: $color-white;
 
     &::after {
       width: 40px;

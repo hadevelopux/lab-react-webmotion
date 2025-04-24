@@ -7,4 +7,32 @@
   left: 0;
   width: 100%;
   z-index: 100;
+}
+
+// Visibility
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Responsive
+@mixin container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// Animations
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
 } 
