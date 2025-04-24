@@ -1,30 +1,55 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import React, { useState } from 'react'
+import { PageTransition } from './components/PageTransition/PageTransition'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
-import PageTransition from './components/PageTransition'
 import styles from './App.module.scss'
 
-const App: React.FC = () => {
+/**
+ * Componente principal de la aplicación
+ * Maneja la navegación entre secciones y las transiciones
+ */
+function App() {
+  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  const [nextContent, setNextContent] = useState<React.ReactNode | null>(null)
+
+  // Array de componentes de página
+  const pageComponents = [Home, About, Contact]
+
+  /**
+   * Maneja el cambio entre secciones
+   * @param index - Índice de la sección a la que se quiere cambiar
+   */
+  const handlePageChange = (index: number) => {
+    if (index === currentPageIndex) return
+    
+    const NextPage = pageComponents[index]
+    setNextContent(<NextPage />)
+    setCurrentPageIndex(index)
+  }
+
   return (
-    <Router>
-      <div className={styles.app}>
-        <PageTransition>
-          <Header />
-          <main className={styles.main}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </main>
-          <Footer />
+    <div className={styles.app}>
+      {/* Navegación */}
+      <nav className={styles.navigation}>
+        <button onClick={() => handlePageChange(0)} className={currentPageIndex === 0 ? styles.active : ''}>
+          Home
+        </button>
+        <button onClick={() => handlePageChange(1)} className={currentPageIndex === 1 ? styles.active : ''}>
+          About
+        </button>
+        <button onClick={() => handlePageChange(2)} className={currentPageIndex === 2 ? styles.active : ''}>
+          Contact
+        </button>
+      </nav>
+
+      {/* Contenido principal con transición */}
+      <main className={styles.main}>
+        <PageTransition nextChildren={nextContent}>
+          {React.createElement(pageComponents[currentPageIndex])}
         </PageTransition>
-      </div>
-    </Router>
+      </main>
+    </div>
   )
 }
 
