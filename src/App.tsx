@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { PageTransition } from './components/PageTransition/PageTransition'
 import Preloader from './components/Preloader/Preloader'
+import CustomCursor from './components/CustomCursor/CustomCursor'
+import Navigation from './components/Navigation/Navigation'
 import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
@@ -9,18 +11,21 @@ import styles from './App.module.scss'
 /**
  * Componente principal de la aplicación
  * Maneja la navegación entre secciones y las transiciones
+ * @returns {JSX.Element} Aplicación renderizada
  */
 function App() {
-  const [currentPageIndex, setCurrentPageIndex] = useState(0)
+  // Estados para controlar la navegación y el contenido
+  const [currentPageIndex, setCurrentPageIndex] = useState<number>(0)
   const [nextContent, setNextContent] = useState<React.ReactNode | null>(null)
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   // Array de componentes de página
   const pageComponents = [Home, About, Contact]
 
   /**
    * Maneja el cambio entre secciones
-   * @param index - Índice de la sección a la que se quiere cambiar
+   * @param {number} index - Índice de la sección a la que se quiere cambiar
+   * @param {React.MouseEvent} e - Evento del clic
    */
   const handlePageChange = (index: number, e: React.MouseEvent) => {
     e.preventDefault() // Prevenir el comportamiento por defecto del ancla
@@ -31,53 +36,29 @@ function App() {
     setCurrentPageIndex(index)
   }
 
+  /**
+   * Maneja la finalización del preloader
+   */
   const handlePreloaderComplete = () => {
     setIsLoading(false)
   }
 
   return (
     <div className={styles.app}>
-      {/* Contenido principal siempre presente */}
-      <nav className={styles.navigation}>
-        <ul>
-          <li>
-            <a 
-              href="/" 
-              onClick={(e) => handlePageChange(0, e)}
-              className={currentPageIndex === 0 ? styles.active : ''}
-            >
-              Home
-            </a>
-          </li>
-          <li>
-            <a 
-              href="/about" 
-              onClick={(e) => handlePageChange(1, e)}
-              className={currentPageIndex === 1 ? styles.active : ''}
-            >
-              About
-            </a>
-          </li>
-          <li>
-            <a 
-              href="/contact" 
-              onClick={(e) => handlePageChange(2, e)}
-              className={currentPageIndex === 2 ? styles.active : ''}
-            >
-              Contact
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <main className={styles.main}>
-        <PageTransition nextChildren={nextContent}>
-          {React.createElement(pageComponents[currentPageIndex])}
-        </PageTransition>
-      </main>
-
-      {/* Preloader como overlay */}
-      {isLoading && <Preloader onLoadingComplete={handlePreloaderComplete} />}
+      <CustomCursor />
+      {isLoading ? (
+        <Preloader onLoadingComplete={handlePreloaderComplete} />
+      ) : (
+        <>
+          <PageTransition nextChildren={nextContent}>
+            {React.createElement(pageComponents[currentPageIndex])}
+          </PageTransition>
+          <Navigation 
+            currentPageIndex={currentPageIndex}
+            onPageChange={handlePageChange}
+          />
+        </>
+      )}
     </div>
   )
 }

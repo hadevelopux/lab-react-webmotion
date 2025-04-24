@@ -1,3 +1,7 @@
+/**
+ * Mixin para posicionamiento fijo
+ * Aplica estilos comunes para elementos con posición fija
+ */
 @mixin fixed-position {
   position: fixed;
   left: 0;
