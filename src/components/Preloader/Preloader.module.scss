@@ -6,6 +6,7 @@
  */
 
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 /* Contenedor principal del preloader */
 .preloader {
@@ -14,18 +15,18 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background-color: $color-black;
+  background-color: var(--color-black);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: $z-index-preloader;
+  z-index: var(--z-index-preloader);
 }
 
 /* Contenedor de la barra de progreso */
 .progressContainer {
   width: 200px;
   height: 2px;
-  background-color: $color-gray;
+  background-color: var(--color-gray);
   overflow: visible;
   position: relative;
 }
@@ -34,10 +35,10 @@
 .progress {
   width: 100%;
   height: 100%;
-  background-color: $color-white;
+  background-color: var(--color-white);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform $transition-slow ease-in-out;
+  transition: transform var(--transition-slow) ease-in-out;
 }
 
 /* Número grande que muestra el progreso */
@@ -46,9 +47,9 @@
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
-  color: $color-gray;
-  font-size: 200px; /* Tamaño específico para el número de porcentaje */
-  font-weight: $font-weight-bold;
+  color: var(--color-gray);
+  font-size: 200px;
+  font-weight: var(--font-weight-bold);
   line-height: 1;
 }
 
@@ -67,7 +68,7 @@
 .bar {
   flex: 1;
   height: 100%;
-  background-color: $color-gray;
+  background-color: var(--color-gray);
   transform-origin: top;
-  transition: transform $transition-slow ease-in-out;
+  transition: transform var(--transition-slow) ease-in-out;
 } 

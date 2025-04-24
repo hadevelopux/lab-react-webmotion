@@ -1,29 +1,29 @@
 /**
- * Estilos del Cursor Personalizado
+ * CustomCursor.module.scss
  * 
- * Estilos para el componente de cursor personalizado.
- * El cursor utiliza una combinación de un punto central y un anillo circundante
- * con transiciones suaves y efectos de hover.
+ * Estilos para el cursor personalizado
+ * Define la apariencia y comportamiento del cursor personalizado
  */
 
-@import '../../styles/variables';
 @import '../../styles/mixins';
 
+/* Contenedor principal del cursor */
 .cursor {
-  // Punto central del cursor
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 4px;
   height: 4px;
-  background: $color-white;
+  background-color: var(--color-white);
   border-radius: 50%;
-  position: fixed;
   pointer-events: none;
-  z-index: $z-index-cursor;
-  mix-blend-mode: difference; // Hace que el cursor sea visible en cualquier fondo
-  will-change: transform; // Optimiza el rendimiento para las animaciones de transformación
+  z-index: var(--z-index-cursor);
+  mix-blend-mode: difference;
+  will-change: transform;
   transform: translate(-50%, -50%);
   @include transition-base;
 
-  // Anillo circundante
+  /* Anillo circundante */
   &::after {
     content: '';
     position: absolute;
@@ -31,23 +31,51 @@
     left: 50%;
     width: 24px;
     height: 24px;
-    border: 1px solid $color-white;
+    border: 1px solid var(--color-white);
     border-radius: 50%;
     transform: translate(-50%, -50%);
     opacity: 0.5;
     @include transition-base;
   }
 
-  // Estado hover - el cursor se expande en elementos interactivos
+  /* Estado hover - el cursor se expande en elementos interactivos */
   &.hover {
     width: 12px;
     height: 12px;
-    background: $color-white;
+    background-color: var(--color-white);
 
     &::after {
       width: 40px;
       height: 40px;
       opacity: 0.8;
     }
+  }
+}
+
+/* Punto central del cursor */
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  @include performance;
+}
+
+/* Efecto de click */
+.click {
+  transform: scale(0.8);
+  transition: transform var(--transition-fast);
+}
+
+/* Clase para ocultar el cursor del sistema */
+.cursor-none {
+  cursor: none !important;
+  
+  * {
+    cursor: none !important;
   }
 } 

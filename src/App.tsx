@@ -1,4 +1,5 @@
 import React, { useState, MouseEvent, KeyboardEvent } from 'react'
+import './styles/global.scss' // Importando estilos globales
 import { PageTransition } from './components/PageTransition/PageTransition'
 import Preloader from './components/Preloader/Preloader'
 import CustomCursor from './components/CustomCursor/CustomCursor'

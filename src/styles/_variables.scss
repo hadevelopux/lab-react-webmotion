@@ -1,64 +1,128 @@
-// Colors
-$color-black: #000000;
-$color-white: #ffffff;
-$color-gray: #333333;
-$color-nav-bg: rgba(0, 0, 0, 0.9);
+/**
+ * _variables.scss
+ * 
+ * Define las variables CSS globales del proyecto
+ * Estas variables pueden ser usadas tanto en SASS como en CSS puro
+ */
 
-// Color States
-$color-hover: $color-white;
-$color-active: $color-white;
-$color-disabled: rgba($color-white, 0.3);
+:root {
+  /* Colors */
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray: #333333;
+  --color-nav-bg: rgba(0, 0, 0, 0.9);
 
-// Typography
-$font-size-base: 1rem;
-$font-size-sm: 0.875rem;
-$font-size-lg: 1.2rem;
-$font-size-xl: 2rem;
-$font-size-xxl: 3rem;
+  /* Color States */
+  --color-hover: rgba(255, 255, 255, 0.8);
+  --color-active: rgba(255, 255, 255, 0.6);
+  --color-disabled: rgba(255, 255, 255, 0.3);
 
-// Font Weights
-$font-weight-normal: 400;
-$font-weight-medium: 500;
-$font-weight-bold: 700;
+  /* Typography */
+  --font-size-base: 1rem;
+  --font-size-sm: 0.875rem;
+  --font-size-lg: 1.2rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
 
-// Spacing
-$spacing-xs: 0.5rem;
-$spacing-sm: 1rem;
-$spacing-md: 2rem;
-$spacing-lg: 3rem;
-$spacing-xl: 4rem;
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 
-// Z-index
-$z-index-navigation: 10;
-$z-index-header: 2;
-$z-index-footer: 2;
-$z-index-preloader: 2000;
-$z-index-modal: 1000;
-$z-index-cursor: 3000;
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
 
-// Layout
-$header-height: 80px;
-$footer-height: 60px;
-$container-padding: 20px;
-$container-max-width: 1200px;
+  /* Z-index */
+  --z-index-navigation: 10;
+  --z-index-header: 2;
+  --z-index-footer: 2;
+  --z-index-preloader: 9999;
+  --z-index-modal: 1000;
+  --z-index-cursor: 99999;
 
-// Breakpoints
-$breakpoint-sm: 576px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 992px;
-$breakpoint-xl: 1200px;
+  /* Layout */
+  --header-height: 80px;
+  --footer-height: 60px;
+  --container-padding: 20px;
+  --container-max-width: 1200px;
 
-// Transitions
-$transition-base: 0.3s ease;
-$transition-fast: 0.15s ease;
-$transition-slow: 0.5s ease;
+  /* Breakpoints */
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
 
-// Borders
-$border-radius-sm: 4px;
-$border-radius-md: 8px;
-$border-radius-lg: 16px;
+  /* Transitions */
+  --transition-base: 0.3s ease;
+  --transition-fast: 0.15s ease;
+  --transition-slow: 0.5s ease;
 
-// Shadows
-$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
-$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3); 
+  /* Borders */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Variables SASS para compatibilidad */
+$color-black: var(--color-black);
+$color-white: var(--color-white);
+$color-gray: var(--color-gray);
+$color-nav-bg: var(--color-nav-bg);
+
+$color-hover: var(--color-hover);
+$color-active: var(--color-active);
+$color-disabled: var(--color-disabled);
+
+$font-size-base: var(--font-size-base);
+$font-size-sm: var(--font-size-sm);
+$font-size-lg: var(--font-size-lg);
+$font-size-xl: var(--font-size-xl);
+$font-size-xxl: var(--font-size-xxl);
+
+$font-weight-normal: var(--font-weight-normal);
+$font-weight-medium: var(--font-weight-medium);
+$font-weight-bold: var(--font-weight-bold);
+
+$spacing-xs: var(--spacing-xs);
+$spacing-sm: var(--spacing-sm);
+$spacing-md: var(--spacing-md);
+$spacing-lg: var(--spacing-lg);
+$spacing-xl: var(--spacing-xl);
+
+$z-index-navigation: var(--z-index-navigation);
+$z-index-header: var(--z-index-header);
+$z-index-footer: var(--z-index-footer);
+$z-index-preloader: var(--z-index-preloader);
+$z-index-modal: var(--z-index-modal);
+$z-index-cursor: var(--z-index-cursor);
+
+$header-height: var(--header-height);
+$footer-height: var(--footer-height);
+$container-padding: var(--container-padding);
+$container-max-width: var(--container-max-width);
+
+$breakpoint-sm: var(--breakpoint-sm);
+$breakpoint-md: var(--breakpoint-md);
+$breakpoint-lg: var(--breakpoint-lg);
+$breakpoint-xl: var(--breakpoint-xl);
+
+$transition-base: var(--transition-base);
+$transition-fast: var(--transition-fast);
+$transition-slow: var(--transition-slow);
+
+$border-radius-sm: var(--border-radius-sm);
+$border-radius-md: var(--border-radius-md);
+$border-radius-lg: var(--border-radius-lg);
+
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg); 

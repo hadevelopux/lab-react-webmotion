@@ -13,23 +13,23 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: $spacing-md;
+  padding: var(--spacing-md);
   display: flex;
   justify-content: center;
-  z-index: $z-index-navigation;
-  background-color: $color-nav-bg;
+  z-index: var(--z-index-navigation);
+  background-color: var(--color-nav-bg);
   backdrop-filter: blur(5px);
   will-change: transform, opacity;
   backface-visibility: hidden;
   transform: translateZ(0);
-  transition: background-color $transition-base;
+  transition: background-color var(--transition-base);
 }
 
 /* Lista de enlaces de navegación */
 .navList {
   list-style: none;
   display: flex;
-  gap: $spacing-lg;
+  gap: var(--spacing-lg);
   margin: 0;
   padding: 0;
   will-change: transform;
@@ -38,30 +38,30 @@
 
   /* Estilos para los enlaces */
   a {
-    color: $color-white;
+    color: var(--color-white);
     text-decoration: none;
-    font-size: $font-size-lg;
-    font-weight: $font-weight-medium;
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-medium);
     letter-spacing: 0.5px;
-    transition: all $transition-base;
+    transition: all var(--transition-base);
     opacity: 1;
     will-change: opacity, transform;
     backface-visibility: hidden;
     transform: translateZ(0);
     display: inline-block;
-    padding: $spacing-xs $spacing-sm;
-    border-radius: $border-radius-sm;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
 
     /* Estado hover - Cambia el color y fondo al pasar el mouse */
     &:hover {
-      color: $color-hover;
-      background-color: $color-gray;
+      color: var(--color-hover);
+      background-color: var(--color-gray);
     }
 
     /* Estado activo - Indica la página actual */
     &.active {
-      color: $color-active;
-      background-color: $color-gray;
+      color: var(--color-active);
+      background-color: var(--color-gray);
     }
 
     /* Estado focus - Mejora la accesibilidad */
