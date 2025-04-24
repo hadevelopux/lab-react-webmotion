@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './styles/global.scss'
 
+/**
+ * Punto de entrada de la aplicación
+ * Renderiza el componente principal App en el elemento root
+ */
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <App />

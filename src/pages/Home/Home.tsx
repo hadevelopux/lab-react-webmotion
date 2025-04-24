@@ -1,11 +1,15 @@
 import React from 'react'
 import styles from './Home.module.scss'
 
+/**
+ * Componente de la página de inicio
+ * Muestra el contenido principal de la aplicación
+ */
 const Home: React.FC = () => {
   return (
     <div className={styles.home}>
-      <h1>Home</h1>
-      <p>Simple content without animations</p>
+      <h1>Inicio</h1>
+      <p>Contenido simple sin animaciones</p>
     </div>
   )
 }
