@@ -3,44 +3,68 @@
  * Define la apariencia y comportamiento de la barra de navegación
  */
 
+@import '../../styles/variables';
+
 /* Contenedor principal de la navegación */
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px;
+  padding: $spacing-md;
   display: flex;
   justify-content: center;
-  z-index: 10;
-  background-color: rgba(0, 0, 0, 0.9);
+  z-index: $z-index-navigation;
+  background-color: $color-nav-bg;
   backdrop-filter: blur(5px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: background-color $transition-base;
 }
 
 /* Lista de enlaces de navegación */
 .navList {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: $spacing-lg;
   margin: 0;
   padding: 0;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
 
   /* Estilos para los enlaces */
   a {
-    color: #fff;
+    color: $color-white;
     text-decoration: none;
-    font-size: 1.1rem;
-    transition: opacity 0.3s ease;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.5px;
+    transition: all $transition-base;
     opacity: 1;
+    will-change: opacity, transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    display: inline-block;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
 
     /* Estado hover */
     &:hover {
-      opacity: 0.8;
+      color: $color-hover;
+      background-color: $color-gray;
     }
 
     /* Estado activo */
     &.active {
-      opacity: 0.5;
+      color: $color-active;
+      background-color: $color-gray;
+    }
+
+    /* Estado focus */
+    &:focus {
+      outline: none;
     }
   }
 }
